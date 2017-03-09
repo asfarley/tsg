@@ -1,0 +1,147 @@
+fileFormatVersion: 2
+guid: baa7cc16a99a47b4b88810760efa6678
+timeCreated: 1450282717
+licenseType: Store
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Body
+    100002: Body Wagon
+    100004: Cube.004
+    100006: Glass Wagon
+    100008: RAD Wagon
+    100010: RAS Wagon
+    100012: RPD Wagon
+    100014: RPS Wagon
+    100016: //RootNode
+    100018: Wheels
+    100020: TRAFFIC_008 Body
+    100022: TRAFFIC_008 Glass
+    100024: TRAFFIC_008 Signs
+    100026: TRAFFIC_008 WFL
+    100028: TRAFFIC_008 WFR
+    100030: TRAFFIC_008 WRL
+    100032: TRAFFIC_008 WRR
+    400000: Body
+    400002: Body Wagon
+    400004: Cube.004
+    400006: Glass Wagon
+    400008: RAD Wagon
+    400010: RAS Wagon
+    400012: RPD Wagon
+    400014: RPS Wagon
+    400016: //RootNode
+    400018: Wheels
+    400020: TRAFFIC_008 Body
+    400022: TRAFFIC_008 Glass
+    400024: TRAFFIC_008 Signs
+    400026: TRAFFIC_008 WFL
+    400028: TRAFFIC_008 WFR
+    400030: TRAFFIC_008 WRL
+    400032: TRAFFIC_008 WRR
+    2300000: Body Wagon
+    2300002: Cube.004
+    2300004: Glass Wagon
+    2300006: RAD Wagon
+    2300008: RAS Wagon
+    2300010: RPD Wagon
+    2300012: RPS Wagon
+    2300014: TRAFFIC_008 Body
+    2300016: TRAFFIC_008 Glass
+    2300018: TRAFFIC_008 Signs
+    2300020: TRAFFIC_008 WFL
+    2300022: TRAFFIC_008 WFR
+    2300024: TRAFFIC_008 WRL
+    2300026: TRAFFIC_008 WRR
+    3300000: Body Wagon
+    3300002: Cube.004
+    3300004: Glass Wagon
+    3300006: RAD Wagon
+    3300008: RAS Wagon
+    3300010: RPD Wagon
+    3300012: RPS Wagon
+    3300014: TRAFFIC_008 Body
+    3300016: TRAFFIC_008 Glass
+    3300018: TRAFFIC_008 Signs
+    3300020: TRAFFIC_008 WFL
+    3300022: TRAFFIC_008 WFR
+    3300024: TRAFFIC_008 WRL
+    3300026: TRAFFIC_008 WRR
+    4300000: Cube.004
+    4300002: RPD Wagon
+    4300004: RAD Wagon
+    4300006: RAS Wagon
+    4300008: RPS Wagon
+    4300010: Glass Wagon
+    4300012: Body Wagon
+    4300014: TRAFFIC_008 Signs
+    4300016: TRAFFIC_008 WRR
+    4300018: TRAFFIC_008 WFR
+    4300020: TRAFFIC_008 WFL
+    4300022: TRAFFIC_008 WRL
+    4300024: TRAFFIC_008 Glass
+    4300026: TRAFFIC_008 Body
+  materials:
+    importMaterials: 0
+    materialName: 1
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

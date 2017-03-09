@@ -1,0 +1,168 @@
+fileFormatVersion: 2
+guid: b259514f096a0834997da26b873e4fe8
+timeCreated: 1450286480
+licenseType: Store
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Body WW
+    100002: Glass WW
+    100004: RAD WW
+    100006: RAS WW
+    100008: RPD WW
+    100010: RPS WW
+    100012: Targhe.003
+    100014: //RootNode
+    100016: TRAFFIC_001 Body
+    100018: TRAFFIC_001 FL
+    100020: TRAFFIC_001 FR
+    100022: TRAFFIC_001 Glass
+    100024: TRAFFIC_001 RL
+    100026: TRAFFIC_001 RR
+    100028: TRAFFIC_001 Signs
+    100030: TRAFFIC_001 WFL
+    100032: TRAFFIC_001 WFR
+    100034: TRAFFIC_001 WRL
+    100036: TRAFFIC_001 WRR
+    100038: TRAFFIC_001 Body.001
+    400000: Body WW
+    400002: Glass WW
+    400004: RAD WW
+    400006: RAS WW
+    400008: RPD WW
+    400010: RPS WW
+    400012: Targhe.003
+    400014: //RootNode
+    400016: TRAFFIC_001 Body
+    400018: TRAFFIC_001 FL
+    400020: TRAFFIC_001 FR
+    400022: TRAFFIC_001 Glass
+    400024: TRAFFIC_001 RL
+    400026: TRAFFIC_001 RR
+    400028: TRAFFIC_001 Signs
+    400030: TRAFFIC_001 WFL
+    400032: TRAFFIC_001 WFR
+    400034: TRAFFIC_001 WRL
+    400036: TRAFFIC_001 WRR
+    400038: TRAFFIC_001 Body.001
+    2300000: Body WW
+    2300002: Glass WW
+    2300004: RAD WW
+    2300006: RAS WW
+    2300008: RPD WW
+    2300010: RPS WW
+    2300012: Targhe.003
+    2300014: TRAFFIC_001 Body
+    2300016: TRAFFIC_001 FL
+    2300018: TRAFFIC_001 FR
+    2300020: TRAFFIC_001 Glass
+    2300022: TRAFFIC_001 RL
+    2300024: TRAFFIC_001 RR
+    2300026: TRAFFIC_001 Signs
+    2300028: TRAFFIC_001 WFL
+    2300030: TRAFFIC_001 WFR
+    2300032: TRAFFIC_001 WRL
+    2300034: TRAFFIC_001 WRR
+    2300036: TRAFFIC_001 Body.001
+    3300000: Body WW
+    3300002: Glass WW
+    3300004: RAD WW
+    3300006: RAS WW
+    3300008: RPD WW
+    3300010: RPS WW
+    3300012: Targhe.003
+    3300014: TRAFFIC_001 Body
+    3300016: TRAFFIC_001 FL
+    3300018: TRAFFIC_001 FR
+    3300020: TRAFFIC_001 Glass
+    3300022: TRAFFIC_001 RL
+    3300024: TRAFFIC_001 RR
+    3300026: TRAFFIC_001 Signs
+    3300028: TRAFFIC_001 WFL
+    3300030: TRAFFIC_001 WFR
+    3300032: TRAFFIC_001 WRL
+    3300034: TRAFFIC_001 WRR
+    3300036: TRAFFIC_001 Body.001
+    4300000: RPD WW
+    4300002: RAD WW
+    4300004: RAS WW
+    4300006: RPS WW
+    4300008: Targhe.003
+    4300010: Glass WW
+    4300012: Body WW
+    4300014: TRAFFIC_001 RR
+    4300016: TRAFFIC_001 FR
+    4300018: TRAFFIC_001 FL
+    4300020: TRAFFIC_001 RL
+    4300022: TRAFFIC_001 Signs
+    4300024: TRAFFIC_001 Glass
+    4300026: TRAFFIC_001 Body
+    4300028: TRAFFIC_001 WRR
+    4300030: TRAFFIC_001 WFR
+    4300032: TRAFFIC_001 WFL
+    4300034: TRAFFIC_001 WRL
+    4300036: TRAFFIC_001 Body.001
+  materials:
+    importMaterials: 0
+    materialName: 1
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

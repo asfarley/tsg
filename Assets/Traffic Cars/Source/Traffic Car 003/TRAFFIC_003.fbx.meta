@@ -1,0 +1,143 @@
+fileFormatVersion: 2
+guid: f33d770185664f64d855f0dd80dc3269
+timeCreated: 1449835665
+licenseType: Store
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Body_BMW
+    100002: Body_BMW.001
+    100004: Body_BMW.002
+    100006: Body_BMW.003
+    100008: Body_BMW.004
+    100010: //RootNode
+    100012: Body_BMW.005
+    100014: Targhe.001
+    100016: TRAFFIC_003 Body
+    100018: TRAFFIC_003 Glass
+    100020: TRAFFIC_003 Signs
+    100022: TRAFFIC_003 WFL
+    100024: TRAFFIC_003 WFR
+    100026: TRAFFIC_003 WRL
+    100028: TRAFFIC_003 WRR
+    400000: Body_BMW
+    400002: Body_BMW.001
+    400004: Body_BMW.002
+    400006: Body_BMW.003
+    400008: Body_BMW.004
+    400010: //RootNode
+    400012: Body_BMW.005
+    400014: Targhe.001
+    400016: TRAFFIC_003 Body
+    400018: TRAFFIC_003 Glass
+    400020: TRAFFIC_003 Signs
+    400022: TRAFFIC_003 WFL
+    400024: TRAFFIC_003 WFR
+    400026: TRAFFIC_003 WRL
+    400028: TRAFFIC_003 WRR
+    2300000: Body_BMW
+    2300002: Body_BMW.001
+    2300004: Body_BMW.002
+    2300006: Body_BMW.003
+    2300008: Body_BMW.004
+    2300010: Body_BMW.005
+    2300012: Targhe.001
+    2300014: TRAFFIC_003 Body
+    2300016: TRAFFIC_003 Glass
+    2300018: TRAFFIC_003 Signs
+    2300020: TRAFFIC_003 WFL
+    2300022: TRAFFIC_003 WFR
+    2300024: TRAFFIC_003 WRL
+    2300026: TRAFFIC_003 WRR
+    3300000: Body_BMW
+    3300002: Body_BMW.001
+    3300004: Body_BMW.002
+    3300006: Body_BMW.003
+    3300008: Body_BMW.004
+    3300010: Body_BMW.005
+    3300012: Targhe.001
+    3300014: TRAFFIC_003 Body
+    3300016: TRAFFIC_003 Glass
+    3300018: TRAFFIC_003 Signs
+    3300020: TRAFFIC_003 WFL
+    3300022: TRAFFIC_003 WFR
+    3300024: TRAFFIC_003 WRL
+    3300026: TRAFFIC_003 WRR
+    4300000: Body_BMW.004
+    4300002: Body_BMW.003
+    4300004: Body_BMW.002
+    4300006: Body_BMW.001
+    4300008: Body_BMW
+    4300010: Body_BMW.005
+    4300012: Targhe.001
+    4300014: TRAFFIC_003 Glass
+    4300016: TRAFFIC_003 Signs
+    4300018: TRAFFIC_003 WFR
+    4300020: TRAFFIC_003 WRR
+    4300022: TRAFFIC_003 WRL
+    4300024: TRAFFIC_003 WFL
+    4300026: TRAFFIC_003 Body
+  materials:
+    importMaterials: 0
+    materialName: 1
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 1
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

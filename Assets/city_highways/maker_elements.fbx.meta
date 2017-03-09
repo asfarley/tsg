@@ -1,0 +1,176 @@
+fileFormatVersion: 2
+guid: 27830e1ed527b9241915a409ca7b08f9
+timeCreated: 1454610797
+licenseType: Store
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: Hemi
+    100002: Hemi.001
+    100004: //RootNode
+    100006: Plane.000
+    100008: roads.000
+    100010: roads.001
+    100012: roads.003
+    100014: roads.004
+    100016: roads.005
+    100018: roads.006
+    100020: roads.007
+    100022: roads.008
+    100024: roads.009
+    100026: roads.010
+    100028: roads.011
+    100030: roads.012
+    100032: roads.013
+    100034: roads.015
+    100036: roads.016
+    100038: roads.017
+    100040: roads.018
+    100042: roads.019
+    100044: roads.020
+    100046: roads.021
+    400000: Hemi
+    400002: Hemi.001
+    400004: //RootNode
+    400006: Plane.000
+    400008: roads.000
+    400010: roads.001
+    400012: roads.003
+    400014: roads.004
+    400016: roads.005
+    400018: roads.006
+    400020: roads.007
+    400022: roads.008
+    400024: roads.009
+    400026: roads.010
+    400028: roads.011
+    400030: roads.012
+    400032: roads.013
+    400034: roads.015
+    400036: roads.016
+    400038: roads.017
+    400040: roads.018
+    400042: roads.019
+    400044: roads.020
+    400046: roads.021
+    2300000: Plane.000
+    2300002: roads.000
+    2300004: roads.001
+    2300006: roads.003
+    2300008: roads.004
+    2300010: roads.005
+    2300012: roads.006
+    2300014: roads.007
+    2300016: roads.008
+    2300018: roads.009
+    2300020: roads.010
+    2300022: roads.011
+    2300024: roads.012
+    2300026: roads.013
+    2300028: roads.015
+    2300030: roads.016
+    2300032: roads.017
+    2300034: roads.018
+    2300036: roads.019
+    2300038: roads.020
+    2300040: roads.021
+    3300000: Plane.000
+    3300002: roads.000
+    3300004: roads.001
+    3300006: roads.003
+    3300008: roads.004
+    3300010: roads.005
+    3300012: roads.006
+    3300014: roads.007
+    3300016: roads.008
+    3300018: roads.009
+    3300020: roads.010
+    3300022: roads.011
+    3300024: roads.012
+    3300026: roads.013
+    3300028: roads.015
+    3300030: roads.016
+    3300032: roads.017
+    3300034: roads.018
+    3300036: roads.019
+    3300038: roads.020
+    3300040: roads.021
+    4300000: roads.000
+    4300002: roads.021
+    4300004: roads.020
+    4300006: roads.019
+    4300008: roads.018
+    4300010: roads.017
+    4300012: roads.016
+    4300014: roads.015
+    4300016: roads.001
+    4300018: Plane.000
+    4300020: roads.013
+    4300022: roads.012
+    4300024: roads.011
+    4300026: roads.010
+    4300028: roads.009
+    4300030: roads.008
+    4300032: roads.007
+    4300034: roads.006
+    4300036: roads.005
+    4300038: roads.004
+    4300040: roads.003
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,148 @@
+fileFormatVersion: 2
+guid: 70eb4d29f9166e94683605eee811fdb2
+timeCreated: 1450776784
+licenseType: Store
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Body Ambulanza
+    100002: RAD Ambulanza
+    100004: RAS Ambulanza
+    100006: RPD Ambulanza
+    100008: RPS Ambulanza
+    100010: Targhe.006
+    100012: //RootNode
+    100014: Vetro
+    100016: AMBULANCE Body
+    100018: AMBULANCE Glass
+    100020: AMBULANCE Signs
+    100022: AMBULANCE WFL
+    100024: AMBULANCE WFR
+    100026: AMBULANCE WRL
+    100028: AMBULANCE WRR
+    100030: AMBULANCE Body Inside
+    400000: Body Ambulanza
+    400002: RAD Ambulanza
+    400004: RAS Ambulanza
+    400006: RPD Ambulanza
+    400008: RPS Ambulanza
+    400010: Targhe.006
+    400012: //RootNode
+    400014: Vetro
+    400016: AMBULANCE Body
+    400018: AMBULANCE Glass
+    400020: AMBULANCE Signs
+    400022: AMBULANCE WFL
+    400024: AMBULANCE WFR
+    400026: AMBULANCE WRL
+    400028: AMBULANCE WRR
+    400030: AMBULANCE Body Inside
+    2300000: Body Ambulanza
+    2300002: RAD Ambulanza
+    2300004: RAS Ambulanza
+    2300006: RPD Ambulanza
+    2300008: RPS Ambulanza
+    2300010: Targhe.006
+    2300012: Vetro
+    2300014: AMBULANCE Body
+    2300016: AMBULANCE Glass
+    2300018: AMBULANCE Signs
+    2300020: AMBULANCE WFL
+    2300022: AMBULANCE WFR
+    2300024: AMBULANCE WRL
+    2300026: AMBULANCE WRR
+    2300028: AMBULANCE Body Inside
+    3300000: Body Ambulanza
+    3300002: RAD Ambulanza
+    3300004: RAS Ambulanza
+    3300006: RPD Ambulanza
+    3300008: RPS Ambulanza
+    3300010: Targhe.006
+    3300012: Vetro
+    3300014: AMBULANCE Body
+    3300016: AMBULANCE Glass
+    3300018: AMBULANCE Signs
+    3300020: AMBULANCE WFL
+    3300022: AMBULANCE WFR
+    3300024: AMBULANCE WRL
+    3300026: AMBULANCE WRR
+    3300028: AMBULANCE Body Inside
+    4300000: Targhe.006
+    4300002: RPS Ambulanza
+    4300004: RAD Ambulanza
+    4300006: RAS Ambulanza
+    4300008: RPD Ambulanza
+    4300010: Vetro
+    4300012: Body Ambulanza
+    4300014: AMBULANCE Signs
+    4300016: AMBULANCE WRL
+    4300018: AMBULANCE WFR
+    4300020: AMBULANCE WFL
+    4300022: AMBULANCE WRR
+    4300024: AMBULANCE Glass
+    4300026: AMBULANCE Body
+    4300028: AMBULANCE Body Inside
+  materials:
+    importMaterials: 0
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

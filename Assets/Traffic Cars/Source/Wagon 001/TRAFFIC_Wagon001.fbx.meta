@@ -1,0 +1,153 @@
+fileFormatVersion: 2
+guid: 3bc7a8de8215e9949b9bba56893fdcb3
+timeCreated: 1450283898
+licenseType: Store
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Body Epaz
+    100002: Glass Epaz
+    100004: RAD Epaz
+    100006: RAS Epaz
+    100008: RPD Epaz
+    100010: RPS Epaz
+    100012: //RootNode
+    100014: Targhe.002
+    100016: WAGON_001 Body
+    100018: WAGON_001 Glass
+    100020: WAGON_001 Signs
+    100022: WAGON_001 WFL
+    100024: WAGON_001 WFR
+    100026: WAGON_001 WRL
+    100028: WAGON_001 WRR
+    100030: WAGON_001 Body.001
+    100032: WAGON_001 Body.002
+    400000: Body Epaz
+    400002: Glass Epaz
+    400004: RAD Epaz
+    400006: RAS Epaz
+    400008: RPD Epaz
+    400010: RPS Epaz
+    400012: //RootNode
+    400014: Targhe.002
+    400016: WAGON_001 Body
+    400018: WAGON_001 Glass
+    400020: WAGON_001 Signs
+    400022: WAGON_001 WFL
+    400024: WAGON_001 WFR
+    400026: WAGON_001 WRL
+    400028: WAGON_001 WRR
+    400030: WAGON_001 Body.001
+    400032: WAGON_001 Body.002
+    2300000: Body Epaz
+    2300002: Glass Epaz
+    2300004: RAD Epaz
+    2300006: RAS Epaz
+    2300008: RPD Epaz
+    2300010: RPS Epaz
+    2300012: Targhe.002
+    2300014: WAGON_001 Body
+    2300016: WAGON_001 Glass
+    2300018: WAGON_001 Signs
+    2300020: WAGON_001 WFL
+    2300022: WAGON_001 WFR
+    2300024: WAGON_001 WRL
+    2300026: WAGON_001 WRR
+    2300028: WAGON_001 Body.001
+    2300030: WAGON_001 Body.002
+    3300000: Body Epaz
+    3300002: Glass Epaz
+    3300004: RAD Epaz
+    3300006: RAS Epaz
+    3300008: RPD Epaz
+    3300010: RPS Epaz
+    3300012: Targhe.002
+    3300014: WAGON_001 Body
+    3300016: WAGON_001 Glass
+    3300018: WAGON_001 Signs
+    3300020: WAGON_001 WFL
+    3300022: WAGON_001 WFR
+    3300024: WAGON_001 WRL
+    3300026: WAGON_001 WRR
+    3300028: WAGON_001 Body.001
+    3300030: WAGON_001 Body.002
+    4300000: RPD Epaz
+    4300002: RAD Epaz
+    4300004: RAS Epaz
+    4300006: RPS Epaz
+    4300008: Glass Epaz
+    4300010: Body Epaz
+    4300012: Targhe.002
+    4300014: WAGON_001 Signs
+    4300016: WAGON_001 WRR
+    4300018: WAGON_001 WFR
+    4300020: WAGON_001 WFL
+    4300022: WAGON_001 WRL
+    4300024: WAGON_001 Glass
+    4300026: WAGON_001 Body
+    4300028: WAGON_001 Body.002
+    4300030: WAGON_001 Body.001
+  materials:
+    importMaterials: 0
+    materialName: 1
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

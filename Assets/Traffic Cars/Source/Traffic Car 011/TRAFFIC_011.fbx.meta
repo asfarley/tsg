@@ -1,0 +1,133 @@
+fileFormatVersion: 2
+guid: 0608f4a10bf2ee649b033d2e022bd528
+timeCreated: 1450453185
+licenseType: Store
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Body Audi
+    100002: Glass Audi
+    100004: //RootNode
+    100006: Cube.004
+    100008: TRAFFIC_011 Body
+    100010: TRAFFIC_011 Glass
+    100012: TRAFFIC_011 Signs
+    100014: Cube.001
+    100016: Cube.002
+    100018: Plane
+    100020: Torus
+    100022: TRAFFIC_011 Inside
+    100024: TRAFFIC_011 Inside.001
+    400000: Body Audi
+    400002: Glass Audi
+    400004: //RootNode
+    400006: Cube.004
+    400008: TRAFFIC_011 Body
+    400010: TRAFFIC_011 Glass
+    400012: TRAFFIC_011 Signs
+    400014: Cube.001
+    400016: Cube.002
+    400018: Plane
+    400020: Torus
+    400022: TRAFFIC_011 Inside
+    400024: TRAFFIC_011 Inside.001
+    2300000: Body Audi
+    2300002: Glass Audi
+    2300004: Cube.004
+    2300006: TRAFFIC_011 Body
+    2300008: TRAFFIC_011 Glass
+    2300010: TRAFFIC_011 Signs
+    2300012: Cube.001
+    2300014: Cube.002
+    2300016: Plane
+    2300018: Torus
+    2300020: TRAFFIC_011 Inside
+    2300022: TRAFFIC_011 Inside.001
+    3300000: Body Audi
+    3300002: Glass Audi
+    3300004: Cube.004
+    3300006: TRAFFIC_011 Body
+    3300008: TRAFFIC_011 Glass
+    3300010: TRAFFIC_011 Signs
+    3300012: Cube.001
+    3300014: Cube.002
+    3300016: Plane
+    3300018: Torus
+    3300020: TRAFFIC_011 Inside
+    3300022: TRAFFIC_011 Inside.001
+    4300000: Body Audi
+    4300002: Glass Audi
+    4300004: Cube.004
+    4300006: TRAFFIC_011 Signs
+    4300008: TRAFFIC_011 Body
+    4300010: TRAFFIC_011 Glass
+    4300012: Cube.002
+    4300014: Torus
+    4300016: Cube.001
+    4300018: Plane
+    4300020: TRAFFIC_011 Inside
+    4300022: TRAFFIC_011 Inside.001
+  materials:
+    importMaterials: 0
+    materialName: 1
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

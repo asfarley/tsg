@@ -1,0 +1,148 @@
+fileFormatVersion: 2
+guid: f2cf4a35e0d38564ca4af21c54aed02b
+timeCreated: 1450343213
+licenseType: Store
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Body Camioncino
+    100002: Glass Camioncino
+    100004: RAD Camioncino
+    100006: RAS Camioncino
+    100008: RPD Camioncino
+    100010: RPS Camioncino
+    100012: //RootNode
+    100014: Targhe.005
+    100016: TRAFFIC_Wagon002 Body
+    100018: TRAFFIC_Wagon002 Glass
+    100020: TRAFFIC_Wagon002 Signs
+    100022: TRAFFIC_Wagon002 WFL
+    100024: TRAFFIC_Wagon002 WFR
+    100026: TRAFFIC_Wagon002 WRL
+    100028: TRAFFIC_Wagon002 WRR
+    100030: TRAFFIC_Wagon002 Inside
+    400000: Body Camioncino
+    400002: Glass Camioncino
+    400004: RAD Camioncino
+    400006: RAS Camioncino
+    400008: RPD Camioncino
+    400010: RPS Camioncino
+    400012: //RootNode
+    400014: Targhe.005
+    400016: TRAFFIC_Wagon002 Body
+    400018: TRAFFIC_Wagon002 Glass
+    400020: TRAFFIC_Wagon002 Signs
+    400022: TRAFFIC_Wagon002 WFL
+    400024: TRAFFIC_Wagon002 WFR
+    400026: TRAFFIC_Wagon002 WRL
+    400028: TRAFFIC_Wagon002 WRR
+    400030: TRAFFIC_Wagon002 Inside
+    2300000: Body Camioncino
+    2300002: Glass Camioncino
+    2300004: RAD Camioncino
+    2300006: RAS Camioncino
+    2300008: RPD Camioncino
+    2300010: RPS Camioncino
+    2300012: Targhe.005
+    2300014: TRAFFIC_Wagon002 Body
+    2300016: TRAFFIC_Wagon002 Glass
+    2300018: TRAFFIC_Wagon002 Signs
+    2300020: TRAFFIC_Wagon002 WFL
+    2300022: TRAFFIC_Wagon002 WFR
+    2300024: TRAFFIC_Wagon002 WRL
+    2300026: TRAFFIC_Wagon002 WRR
+    2300028: TRAFFIC_Wagon002 Inside
+    3300000: Body Camioncino
+    3300002: Glass Camioncino
+    3300004: RAD Camioncino
+    3300006: RAS Camioncino
+    3300008: RPD Camioncino
+    3300010: RPS Camioncino
+    3300012: Targhe.005
+    3300014: TRAFFIC_Wagon002 Body
+    3300016: TRAFFIC_Wagon002 Glass
+    3300018: TRAFFIC_Wagon002 Signs
+    3300020: TRAFFIC_Wagon002 WFL
+    3300022: TRAFFIC_Wagon002 WFR
+    3300024: TRAFFIC_Wagon002 WRL
+    3300026: TRAFFIC_Wagon002 WRR
+    3300028: TRAFFIC_Wagon002 Inside
+    4300000: RPD Camioncino
+    4300002: RAD Camioncino
+    4300004: RAS Camioncino
+    4300006: RPS Camioncino
+    4300008: Glass Camioncino
+    4300010: Body Camioncino
+    4300012: Targhe.005
+    4300014: TRAFFIC_Wagon002 Signs
+    4300016: TRAFFIC_Wagon002 WRR
+    4300018: TRAFFIC_Wagon002 WFR
+    4300020: TRAFFIC_Wagon002 WFL
+    4300022: TRAFFIC_Wagon002 WRL
+    4300024: TRAFFIC_Wagon002 Glass
+    4300026: TRAFFIC_Wagon002 Body
+    4300028: TRAFFIC_Wagon002 Inside
+  materials:
+    importMaterials: 0
+    materialName: 1
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

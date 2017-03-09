@@ -1,0 +1,160 @@
+fileFormatVersion: 2
+guid: b439346ff49eb2e419aeab421869c041
+timeCreated: 1450347016
+licenseType: Store
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Body Polo
+    100002: Body Polo_MeshPart0
+    100004: Body Polo_MeshPart1
+    100006: Glass Polo
+    100008: RAD Polo
+    100010: RAS Polo
+    100012: RPD Polo
+    100014: RPS Polo
+    100016: //RootNode
+    100018: Targhe.007
+    100020: TRAFFIC_010 Body
+    100022: TRAFFIC_010 Body_MeshPart0
+    100024: TRAFFIC_010 Body_MeshPart1
+    100026: TRAFFIC_010 Glass
+    100028: TRAFFIC_010 Signs
+    100030: TRAFFIC_010 WFL
+    100032: TRAFFIC_010 WFR
+    100034: TRAFFIC_010 WRR
+    100036: TRAFFIC_010 WRL
+    400000: Body Polo
+    400002: Body Polo_MeshPart0
+    400004: Body Polo_MeshPart1
+    400006: Glass Polo
+    400008: RAD Polo
+    400010: RAS Polo
+    400012: RPD Polo
+    400014: RPS Polo
+    400016: //RootNode
+    400018: Targhe.007
+    400020: TRAFFIC_010 Body
+    400022: TRAFFIC_010 Body_MeshPart0
+    400024: TRAFFIC_010 Body_MeshPart1
+    400026: TRAFFIC_010 Glass
+    400028: TRAFFIC_010 Signs
+    400030: TRAFFIC_010 WFL
+    400032: TRAFFIC_010 WFR
+    400034: TRAFFIC_010 WRR
+    400036: TRAFFIC_010 WRL
+    2300000: Body Polo_MeshPart0
+    2300002: Body Polo_MeshPart1
+    2300004: Glass Polo
+    2300006: RAD Polo
+    2300008: RAS Polo
+    2300010: RPD Polo
+    2300012: RPS Polo
+    2300014: Targhe.007
+    2300016: TRAFFIC_010 Body_MeshPart0
+    2300018: TRAFFIC_010 Body_MeshPart1
+    2300020: TRAFFIC_010 Glass
+    2300022: TRAFFIC_010 Signs
+    2300024: TRAFFIC_010 WFL
+    2300026: TRAFFIC_010 WFR
+    2300028: TRAFFIC_010 WRR
+    2300030: TRAFFIC_010 Body
+    2300032: TRAFFIC_010 WRL
+    3300000: Body Polo_MeshPart0
+    3300002: Body Polo_MeshPart1
+    3300004: Glass Polo
+    3300006: RAD Polo
+    3300008: RAS Polo
+    3300010: RPD Polo
+    3300012: RPS Polo
+    3300014: Targhe.007
+    3300016: TRAFFIC_010 Body_MeshPart0
+    3300018: TRAFFIC_010 Body_MeshPart1
+    3300020: TRAFFIC_010 Glass
+    3300022: TRAFFIC_010 Signs
+    3300024: TRAFFIC_010 WFL
+    3300026: TRAFFIC_010 WFR
+    3300028: TRAFFIC_010 WRR
+    3300030: TRAFFIC_010 Body
+    3300032: TRAFFIC_010 WRL
+    4300000: RPD Polo
+    4300002: RAD Polo
+    4300004: RAS Polo
+    4300006: RPS Polo
+    4300008: Body Polo_MeshPart0
+    4300010: Body Polo_MeshPart1
+    4300012: Glass Polo
+    4300014: Targhe.007
+    4300016: TRAFFIC_010 Signs
+    4300018: TRAFFIC_010 WRR
+    4300020: TRAFFIC_010 WFL
+    4300022: TRAFFIC_010 WFR
+    4300024: TRAFFIC_010 Body_MeshPart0
+    4300026: TRAFFIC_010 Body_MeshPart1
+    4300028: TRAFFIC_010 Glass
+    4300030: TRAFFIC_010 Body
+    4300032: TRAFFIC_010 WRL
+  materials:
+    importMaterials: 0
+    materialName: 1
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

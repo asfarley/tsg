@@ -1,53 +1,86 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
+using System.Diagnostics;
 using System.IO;
 using UnityEngine;
 
-public class VideoExport : MonoBehaviour {
+public class VideoExport : MonoBehaviour
+{
+    private const int FrameRate = 25;
+    private const string RootOutputPath = @"C:\TSG"; // TODO: get from settings
+    private const string AviGeneratorPathname = @"S:\Projects\Traffic\PngToAvi.exe"; // TODO: get from settings
+    private string _outputFolder;
+    private bool _launched;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start ()
+    {
+
+        _launched = false;
+        if (! File.Exists(AviGeneratorPathname))
+            throw new ApplicationException("Cannot find AVI generator. Fix the hardcoded path.");
+
 		//Create movie file
-	}
+        Time.captureFramerate = FrameRate;
+        _outputFolder = Path.Combine(RootOutputPath, Guid.NewGuid().ToString("N").ToUpperInvariant());
+        Directory.CreateDirectory(_outputFolder);
+
+        _launched = true;
+    }
 	
 	// Update is called once per frame
-	void Update () {
+    void Update () {
 		//Append frame
-	}
 
-    private static VideoExport _instance;
+        if (! _launched) return;
 
-    public static VideoExport Instance { get { return _instance; } }
+        // add zeroes to beginning to simplify sort
+        Application.CaptureScreenshot(Path.Combine(_outputFolder, Time.frameCount.ToString("D8") + ".png"));
+    }
 
-    private void Awake()
+    void OnDestroy()
     {
-        if (_instance != null && _instance != this)
+        if (!_launched) return;
+        var aviName = Path.GetFileName(_outputFolder) + ".avi";
+
+        var processStartInfo = new ProcessStartInfo(AviGeneratorPathname)
         {
-            Destroy(this.gameObject);
-        }
-        else {
-            _instance = this;
-        }
-
-        CreateNewOutputFolder();
+            Arguments = string.Format("\"{0}\" \"{1}\" {2}", _outputFolder, Path.Combine(RootOutputPath, aviName), FrameRate),
+            UseShellExecute = false,
+            LoadUserProfile = false,
+            WindowStyle = ProcessWindowStyle.Hidden
+        };
+        var process = Process.Start(processStartInfo);
     }
 
-    public string RootOutputPath = @"C:\TSG";
-    public string OutputFolder = @"";
+    //private static VideoExport _instance;
 
-    public void CreateNewOutputFolder()
-    {
-        //OutputFolder = DateTime.Now.ToString("O");
-        OutputFolder = "Test";
-        var fullOutputPath = FullOutputPath();
-        if (!Directory.Exists(FullOutputPath()))
-        {
-            Directory.CreateDirectory(fullOutputPath);
-        }
-    }
+    //public static VideoExport Instance { get { return _instance; } }
 
-    public string FullOutputPath()
-    {
-        return RootOutputPath + @"\" + OutputFolder;
-    }
+    //public void Awake()
+    //{
+    //    if (_instance != null && _instance != this)
+    //    {
+    //        Destroy(this.gameObject);
+    //    }
+    //    else {
+    //        _instance = this;
+    //    }
+
+    //    CreateNewOutputFolder();
+    //}
+
+    //public void CreateNewOutputFolder()
+    //{
+    //    _outputFolder = "Test";
+    //    var fullOutputPath = FullOutputPath();
+    //    if (!Directory.Exists(fullOutputPath))
+    //    {
+    //        Directory.CreateDirectory(fullOutputPath);
+    //    }
+    //}
+
+    //public string FullOutputPath()
+    //{
+    //    return RootOutputPath + @"\" + _outputFolder;
+    //}
 }

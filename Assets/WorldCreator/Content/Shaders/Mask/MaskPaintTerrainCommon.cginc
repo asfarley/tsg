@@ -1,3 +1,5 @@
+// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
 #ifndef TERRAIN_SPLATMAP_COMMON_CGINC_INCLUDED
 #define TERRAIN_SPLATMAP_COMMON_CGINC_INCLUDED
 
@@ -18,7 +20,7 @@ fixed4 _HeatColor;
 void SplatmapVert(inout appdata_full v, out Input data)
 {
 	UNITY_INITIALIZE_OUTPUT(Input, data);
-	float4 pos = mul (UNITY_MATRIX_MVP, v.vertex);
+	float4 pos = UnityObjectToClipPos (v.vertex);
 	UNITY_TRANSFER_FOG(data, pos);
 
 #ifdef _TERRAIN_NORMAL_MAP

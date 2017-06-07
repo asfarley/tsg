@@ -37,7 +37,7 @@ public class CarMovement : MonoBehaviour {
         }
     }
 
-    public void FixedUpdate()
+    public void Update()
 	{   
         //Get state relative to target
         Transform target = GetComponent<TargetNavigation>().CurrentTarget;

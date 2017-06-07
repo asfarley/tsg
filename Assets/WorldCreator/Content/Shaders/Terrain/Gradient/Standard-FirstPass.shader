@@ -1,3 +1,5 @@
+// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
 Shader "WorldCreator/Terrain/Gradient" {
 	Properties {
 		// set by terrain engine
@@ -42,7 +44,7 @@ Shader "WorldCreator/Terrain/Gradient" {
     void SplatmapVert(inout appdata_full v, out Input data)
     {
       UNITY_INITIALIZE_OUTPUT(Input, data);
-      float4 pos = mul (UNITY_MATRIX_MVP, v.vertex);
+      float4 pos = UnityObjectToClipPos (v.vertex);
       UNITY_TRANSFER_FOG(data, pos);
       data.localPos = v.vertex.xyz;
     

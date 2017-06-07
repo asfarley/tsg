@@ -7,7 +7,7 @@ public class VideoExport : MonoBehaviour
 {
     private const int FrameRate = 25;
     private const string RootOutputPath = @"C:\TSG"; // TODO: get from settings
-    private const string AviGeneratorPathname = @"S:\Projects\Traffic\PngToAvi.exe"; // TODO: get from settings
+    private const string AviGeneratorPathname = @"C:\VTCProject\images-to-avi\src\bin\Debug\ImgToAvi.exe"; // TODO: get from settings
     private string _outputFolder;
     private bool _launched;
 

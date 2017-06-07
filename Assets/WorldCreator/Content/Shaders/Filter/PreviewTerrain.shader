@@ -1,4 +1,6 @@
-﻿Shader "Custom/WorldCreator/TerrainPreview" {
+﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
+Shader "Custom/WorldCreator/TerrainPreview" {
     Properties 
     {
         _MainTex ("Base (RGB)", 2D) = "white" {}
@@ -70,7 +72,7 @@
             fragmentInput vert(vertexInput v) 
             {
               fragmentInput o;
-              o.vertex = mul (UNITY_MATRIX_MVP, v.vertex + float4(v.normal.xyz, 0.0f) * GetHeight(v.texcoord0) * 0.125f);
+              o.vertex = UnityObjectToClipPos (v.vertex + float4(v.normal.xyz, 0.0f) * GetHeight(v.texcoord0) * 0.125f);
               o.uv = v.texcoord0;
               
               return o;

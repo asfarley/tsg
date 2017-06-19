@@ -51,9 +51,13 @@ public class SpawnVehicles : MonoBehaviour
                 }
             }
 
+			if (navigation.Exits.Count == 0) {
+				Console.WriteLine ("This should not happen.");
+			}
+
             navigation.RandomizeTarget();
+			newcar.GetComponentInChildren<TargetNavigation>().enabled = true;
             newcar.GetComponentInChildren<CarMovement>().enabled = true;
-            newcar.GetComponentInChildren<TargetNavigation>().enabled = true;
         }
 
     }

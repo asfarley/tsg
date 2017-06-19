@@ -8,6 +8,8 @@ public class TargetNavigation : MonoBehaviour
     private int _targetIndex;
     private int _trajectoryIndex;
 
+	public double ThresholdWaypointDistance = 8.0;
+
     public Trajectory CurrentTrajectory
     {
         get { return Exits[_trajectoryIndex]; }
@@ -15,7 +17,9 @@ public class TargetNavigation : MonoBehaviour
 
     public Transform CurrentTarget
     {
-        get { return Exits[_trajectoryIndex][_targetIndex];  }
+        get { 
+			return Exits[_trajectoryIndex][_targetIndex];  
+		}
     }
 
     public List<Trajectory> Exits = new List<Trajectory>();
@@ -29,7 +33,7 @@ public class TargetNavigation : MonoBehaviour
 	void Update ()
 	{
         var distance = AbsoluteDistanceToTarget();
-	    if (distance < 5)
+		if (distance < ThresholdWaypointDistance)
 	    {
 	        if (_targetIndex >= Exits[_trajectoryIndex].Count - 1) //If this is the last target in the list
 	        {

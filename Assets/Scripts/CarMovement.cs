@@ -40,6 +40,8 @@ public class CarMovement : MonoBehaviour {
     public void Update()
 	{   
         //Get state relative to target
+		try{
+		TargetNavigation tv = GetComponent<TargetNavigation>();
         Transform target = GetComponent<TargetNavigation>().CurrentTarget;
         Rigidbody carbody = GetComponent<Rigidbody>();
 
@@ -67,13 +69,21 @@ public class CarMovement : MonoBehaviour {
 
         //Log state
         AppendState(carbody);
+		}
+		catch(ArgumentOutOfRangeException ex) {
+			Console.WriteLine (ex.Message);
+		}
 	}
 
     private float CalculateMotorTorqueSignal(Rigidbody carbody)
-    {
+	{
         if (_impendingCollision)
         {
-            return -5*maxMotorTorque/_distanceToCollision;
+			float xVel = transform.InverseTransformDirection(carbody.velocity).x;
+			if (xVel > 0)
+				return -5 * maxMotorTorque * xVel / _distanceToCollision;
+			else
+				return 0;
         }
         else
         {

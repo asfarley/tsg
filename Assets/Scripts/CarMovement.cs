@@ -10,15 +10,19 @@ public class CarMovement : MonoBehaviour {
 	public float maxMotorTorque; // maximum torque the motor can apply to wheel
 	public float maxSteeringAngle; // maximum steer angle the wheel can have
     public float steeringGain; // closed-loop heading gain
+	public int maxLifetimeSeconds;
 
     private bool _impendingCollision = false;
     private float _distanceToCollision = 0;
+	private DateTime _startTime;
+
 
     public List<VehicleState> StateHistory;
 
     public void Start()
     {
         StateHistory = new List<VehicleState>();
+		_startTime = DateTime.Now;
     }
 
     public void WriteStateHistory()
@@ -69,6 +73,13 @@ public class CarMovement : MonoBehaviour {
 
         //Log state
         AppendState(carbody);
+
+		var lifetime = DateTime.Now - _startTime;
+		if(lifetime >= TimeSpan.FromSeconds(maxLifetimeSeconds))
+		{
+			Destroy(this.gameObject);
+		}
+
 		}
 		catch(ArgumentOutOfRangeException ex) {
 			Console.WriteLine (ex.Message);

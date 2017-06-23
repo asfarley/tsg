@@ -6,7 +6,6 @@ using UnityEngine;
 public class VideoExport : MonoBehaviour
 {
     private const int FrameRate = 25;
-    private const string RootOutputPath = @"C:\TSG"; // TODO: get from settings
     private const string AviGeneratorPathname = @"C:\VTCProject\images-to-avi\src\bin\Debug\ImgToAvi.exe"; // TODO: get from settings
     private string _outputFolder;
     private bool _launched;
@@ -16,12 +15,14 @@ public class VideoExport : MonoBehaviour
     {
 
         _launched = false;
-        if (! File.Exists(AviGeneratorPathname))
-            throw new ApplicationException("Cannot find AVI generator. Fix the hardcoded path.");
+//        if (! File.Exists(AviGeneratorPathname))
+//            throw new ApplicationException("Cannot find AVI generator. Fix the hardcoded path.");
 
 		//Create movie file
         Time.captureFramerate = FrameRate;
-        _outputFolder = Path.Combine(RootOutputPath, Guid.NewGuid().ToString("N").ToUpperInvariant());
+		var path = GameObject.FindGameObjectWithTag("configuration").GetComponent<Configuration>().FullOutputPath();
+
+		_outputFolder = Path.Combine(path, Guid.NewGuid().ToString("N").ToUpperInvariant());
         Directory.CreateDirectory(_outputFolder);
 
         _launched = true;
@@ -33,23 +34,25 @@ public class VideoExport : MonoBehaviour
 
         if (! _launched) return;
 
+		var path = GameObject.FindGameObjectWithTag("configuration").GetComponent<Configuration>().FullOutputPath();
+
         // add zeroes to beginning to simplify sort
         Application.CaptureScreenshot(Path.Combine(_outputFolder, Time.frameCount.ToString("D8") + ".png"));
     }
 
     void OnDestroy()
     {
-        if (!_launched) return;
-        var aviName = Path.GetFileName(_outputFolder) + ".avi";
-
-        var processStartInfo = new ProcessStartInfo(AviGeneratorPathname)
-        {
-            Arguments = string.Format("\"{0}\" \"{1}\" {2}", _outputFolder, Path.Combine(RootOutputPath, aviName), FrameRate),
-            UseShellExecute = false,
-            LoadUserProfile = false,
-            WindowStyle = ProcessWindowStyle.Hidden
-        };
-        var process = Process.Start(processStartInfo);
+//        if (!_launched) return;
+//        var aviName = Path.GetFileName(_outputFolder) + ".avi";
+//
+//        var processStartInfo = new ProcessStartInfo(AviGeneratorPathname)
+//        {
+//            Arguments = string.Format("\"{0}\" \"{1}\" {2}", _outputFolder, Path.Combine(RootOutputPath, aviName), FrameRate),
+//            UseShellExecute = false,
+//            LoadUserProfile = false,
+//            WindowStyle = ProcessWindowStyle.Hidden
+//        };
+//        var process = Process.Start(processStartInfo);
     }
 
     //private static VideoExport _instance;

@@ -4,8 +4,10 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEditor;
+using System.IO;
 
 public class CarMovement : MonoBehaviour {
+	
 	public List<AxleInfo> axleInfos; // the information about each individual axle
 	public float maxMotorTorque; // maximum torque the motor can apply to wheel
 	public float maxSteeringAngle; // maximum steer angle the wheel can have
@@ -15,7 +17,6 @@ public class CarMovement : MonoBehaviour {
     private bool _impendingCollision = false;
     private float _distanceToCollision = 0;
 	private DateTime _startTime;
-
 
     public List<VehicleState> StateHistory;
 
@@ -34,7 +35,7 @@ public class CarMovement : MonoBehaviour {
             //Get path from configuration
             var path = GameObject.FindGameObjectWithTag("configuration").GetComponent<Configuration>().FullOutputPath();
             //Create new text file
-            var filename = path + @"\" + Guid.NewGuid().ToString() + " statehistory.txt";
+			var filename = Path.Combine(path, Guid.NewGuid().ToString() + " statehistory.txt");
 
             var stateHistoryTextlines = StateHistory.Select(vs => vs.ToTextfileString());
             System.IO.File.WriteAllLines(filename, stateHistoryTextlines.ToArray());

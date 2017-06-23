@@ -28,7 +28,6 @@ public class Configuration : MonoBehaviour
 
     public void CreateNewOutputFolder()
     {
-        //OutputFolder = DateTime.Now.ToString("O");
         OutputFolder = "Test";
         var fullOutputPath = FullOutputPath();
         if (!Directory.Exists(FullOutputPath()))
@@ -39,6 +38,6 @@ public class Configuration : MonoBehaviour
 
     public string FullOutputPath()
     {
-        return RootOutputPath + @"\" + OutputFolder;
+		return Path.Combine(RootOutputPath, OutputFolder);
     }
 }

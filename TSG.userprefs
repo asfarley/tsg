@@ -1,10 +1,10 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/VideoExport.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/CarMovement.cs">
     <Files>
-      <File FileName="Assets/Scripts/CarMovement.cs" Line="39" Column="1" />
-      <File FileName="Assets/Scripts/Configuration.cs" Line="27" Column="38" />
-      <File FileName="Assets/Scripts/TargetNavigation.cs" Line="41" Column="42" />
+      <File FileName="Assets/Scripts/CarMovement.cs" Line="297" Column="20" />
+      <File FileName="Assets/Scripts/Configuration.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/TargetNavigation.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/VideoExport.cs" Line="30" Column="2" />
       <File FileName="Assets/Scripts/SpawnVehicles.cs" Line="1" Column="1" />
     </Files>

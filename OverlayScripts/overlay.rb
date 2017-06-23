@@ -126,6 +126,7 @@ Dir[ARGV[0] + "/*.png"].each do |file|
 
   #Open image file
   image = ChunkyPNG::Image.from_file(file)
+  binding.pry
   #puts image.metadata['Title']
   #image.metadata['Author'] = 'Willem van Bergen'
   #image.save('with_metadata.png') # Overwrite file

@@ -5,7 +5,7 @@
 #
 # Author::    Alexander Farley
 
-require 'chunky_png'
+require 'oily_png'
 require 'optparse'
 require 'fileutils'
 require 'pry'
@@ -100,6 +100,7 @@ end.parse!
 #p ARGV
 
 #Read state histories
+puts "Reading state histories..."
 tj = TrajectoryBundle.new
 Dir[ARGV[1] + "/*statehistory.txt"].each do |file|
   sh = StateHistory.new
@@ -119,24 +120,31 @@ Dir[ARGV[1] + "/*statehistory.txt"].each do |file|
   tj.add(sh)
 end
 
+puts "Deleting old images..."
+#binding.pry
+delete_files = Dir.glob("#{ARGV[0]}/Overlay/*.png")
+#binding.pry
+FileUtils.rm delete_files
+
+puts "Overlaying images..."
 Dir[ARGV[0] + "/*.png"].each do |file|
   basename = File.basename(file, ".*")
   dirname = File.dirname(file)
   frame = basename.to_i
 
+  puts "Frame: #{frame}"
+
   #Open image file
   image = ChunkyPNG::Image.from_file(file)
-  binding.pry
-  #puts image.metadata['Title']
-  #image.metadata['Author'] = 'Willem van Bergen'
-  #image.save('with_metadata.png') # Overwrite file
 
   if(tj.containsFrame?(frame))
     states = tj.statesInFrame(frame)
     #puts "For frame ##{frame}"
     states.each do |state|
       #binding.pry
-      image.rect(state.x, state.y, state.x + state.width, state.y + state.height, ChunkyPNG::Color::WHITE)
+      if(state.x > 0 and state.x < image.width and state.y > 0 and state.y < image.height)
+        image.rect(state.x, state.y, state.x + state.width, state.y + state.height, ChunkyPNG::Color::WHITE)
+      end
       #If bounding box is in range, overlay on image
       #puts state
     end

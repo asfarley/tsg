@@ -205,7 +205,7 @@ public class CarMovement : MonoBehaviour {
             state.VxScreenCoordinates = screenVelocity.x;
             state.VyScreenCoordinates = screenVelocity.y;
             state.ObjectHeightScreenCoordinates = screenBounds.extents[0]; //Length of i-component should correspond to width in screen coordinates
-            state.ObjectHeightScreenCoordinates = screenBounds.extents[1]; //Length of j-component should correspond to height in screen coordinates
+            state.ObjectWidthScreenCoordinates = screenBounds.extents[1]; //Length of j-component should correspond to height in screen coordinates
             state.Timestamp = DateTime.Now;
             state.Frame = Time.frameCount;
             StateHistory.Add(state);

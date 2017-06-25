@@ -18,12 +18,15 @@ public class CarMovement : MonoBehaviour {
     private float _distanceToCollision = 0;
 	private DateTime _startTime;
 
+	private Guid _guid;
+
     public List<VehicleState> StateHistory;
 
     public void Start()
     {
         StateHistory = new List<VehicleState>();
 		_startTime = DateTime.Now;
+		_guid = Guid.NewGuid();
     }
 
     public void WriteStateHistory()
@@ -35,12 +38,34 @@ public class CarMovement : MonoBehaviour {
             //Get path from configuration
             var path = GameObject.FindGameObjectWithTag("configuration").GetComponent<Configuration>().FullOutputPath();
             //Create new text file
-			var filename = Path.Combine(path, Guid.NewGuid().ToString() + " statehistory.txt");
+			var filename = Path.Combine(path, _guid.ToString() + " statehistory.txt");
 
             var stateHistoryTextlines = StateHistory.Select(vs => vs.ToTextfileString());
             System.IO.File.WriteAllLines(filename, stateHistoryTextlines.ToArray());
         }
     }
+
+	public void WriteIncrementalStateHistory()
+	{
+		//Get path from configuration
+		var path = GameObject.FindGameObjectWithTag("configuration").GetComponent<Configuration>().FullOutputPath();
+		//Create new text file
+		var filename = Path.Combine(path, _guid.ToString() + " statehistory.txt");
+
+
+		using (TextWriter tw = new StreamWriter(filename,true)) {
+
+			if (!File.Exists(filename))
+			{
+				File.Create(filename);
+			}
+
+			if (StateHistory.Count () >= 1) {
+				tw.WriteLine (StateHistory.Last ().ToTextfileString ());
+			}
+			tw.Close();
+		}
+	}
 
     public void Update()
 	{   
@@ -74,6 +99,7 @@ public class CarMovement : MonoBehaviour {
 
         //Log state
         AppendState(carbody);
+		WriteIncrementalStateHistory();
 
 		var lifetime = DateTime.Now - _startTime;
 		if(lifetime >= TimeSpan.FromSeconds(maxLifetimeSeconds))
@@ -189,23 +215,28 @@ public class CarMovement : MonoBehaviour {
                 Debug.Log(ex.Message);
             }
 
-            Bounds screenBounds = new Bounds();
-            screenBounds.center = Camera.main.WorldToScreenPoint(bounds.center);
-            screenBounds.max = Camera.main.WorldToScreenPoint(bounds.max);
-            screenBounds.min = Camera.main.WorldToScreenPoint(bounds.min);
+
+
+            //Bounds screenBounds = new Bounds();
+            //screenBounds.center = Camera.main.WorldToScreenPoint(bounds.center);
+            //screenBounds.max = Camera.main.WorldToScreenPoint(bounds.max);
+            //screenBounds.min = Camera.main.WorldToScreenPoint(bounds.min);
+			Rect boundingRect = GUIRectWithObject(carbody.gameObject);
             var state = new VehicleState();
             state.CentroidXGlobalCoordinates = this.transform.position.x;
             state.CentroidYGlobalCoordinates = this.transform.position.y;
             state.CentroidZGlobalCoordinates = this.transform.position.z;
-            state.CentroidXScreenCoordinates = screenPoint.x;
-            state.CentroidYScreenCoordinates = screenPoint.y;
+			state.CentroidXScreenCoordinates = boundingRect.center.x;
+			state.CentroidYScreenCoordinates = boundingRect.center.y;
             state.VxGlobalCoordinates = carbody.velocity.x;
             state.VyGlobalCoordinates = carbody.velocity.y;
             state.VzGlobalCoordinates = carbody.velocity.z;
             state.VxScreenCoordinates = screenVelocity.x;
             state.VyScreenCoordinates = screenVelocity.y;
-            state.ObjectHeightScreenCoordinates = screenBounds.extents[0]; //Length of i-component should correspond to width in screen coordinates
-            state.ObjectWidthScreenCoordinates = screenBounds.extents[1]; //Length of j-component should correspond to height in screen coordinates
+//            state.ObjectHeightScreenCoordinates = screenBounds.extents[0]; //Length of i-component should correspond to width in screen coordinates
+//            state.ObjectWidthScreenCoordinates = screenBounds.extents[1]; //Length of j-component should correspond to height in screen coordinates
+			state.ObjectHeightScreenCoordinates = boundingRect.height; 
+			state.ObjectWidthScreenCoordinates = boundingRect.width; 
             state.Timestamp = DateTime.Now;
             state.Frame = Time.frameCount;
             StateHistory.Add(state);
@@ -219,30 +250,50 @@ public class CarMovement : MonoBehaviour {
         }
     }
 
-    public static Rect GUIRectWithObject(GameObject go)
-    {
-        Vector3 cen = go.GetComponent<Renderer>().bounds.center;
-        Vector3 ext = go.GetComponent<Renderer>().bounds.extents;
-        Vector2[] extentPoints = new Vector2[8]
-        {
-         HandleUtility.WorldToGUIPoint(new Vector3(cen.x-ext.x, cen.y-ext.y, cen.z-ext.z)),
-         HandleUtility.WorldToGUIPoint(new Vector3(cen.x+ext.x, cen.y-ext.y, cen.z-ext.z)),
-         HandleUtility.WorldToGUIPoint(new Vector3(cen.x-ext.x, cen.y-ext.y, cen.z+ext.z)),
-         HandleUtility.WorldToGUIPoint(new Vector3(cen.x+ext.x, cen.y-ext.y, cen.z+ext.z)),
-         HandleUtility.WorldToGUIPoint(new Vector3(cen.x-ext.x, cen.y+ext.y, cen.z-ext.z)),
-         HandleUtility.WorldToGUIPoint(new Vector3(cen.x+ext.x, cen.y+ext.y, cen.z-ext.z)),
-         HandleUtility.WorldToGUIPoint(new Vector3(cen.x-ext.x, cen.y+ext.y, cen.z+ext.z)),
-         HandleUtility.WorldToGUIPoint(new Vector3(cen.x+ext.x, cen.y+ext.y, cen.z+ext.z))
-        };
-        Vector2 min = extentPoints[0];
-        Vector2 max = extentPoints[0];
-        foreach (Vector2 v in extentPoints)
-        {
-            min = Vector2.Min(min, v);
-            max = Vector2.Max(max, v);
-        }
-        return new Rect(min.x, min.y, max.x - min.x, max.y - min.y);
-    }
+	public Rect GUIRectWithObject(GameObject go)
+	{
+		var renderers = go.GetComponentsInChildren<Renderer>();
+		Vector2 min = new Vector2();
+		Vector2 max = new Vector2();
+
+		bool initialized = false;
+
+		foreach (var r in renderers) {
+			Vector3 cen = r.GetComponent<Renderer>().bounds.center;
+			Vector3 ext = r.GetComponent<Renderer>().bounds.extents;
+			Vector2[] extentPoints = new Vector2[8]
+			{
+				WorldToGUIPoint(new Vector3(cen.x-ext.x, cen.y-ext.y, cen.z-ext.z)),
+				WorldToGUIPoint(new Vector3(cen.x+ext.x, cen.y-ext.y, cen.z-ext.z)),
+				WorldToGUIPoint(new Vector3(cen.x-ext.x, cen.y-ext.y, cen.z+ext.z)),
+				WorldToGUIPoint(new Vector3(cen.x+ext.x, cen.y-ext.y, cen.z+ext.z)),
+				WorldToGUIPoint(new Vector3(cen.x-ext.x, cen.y+ext.y, cen.z-ext.z)),
+				WorldToGUIPoint(new Vector3(cen.x+ext.x, cen.y+ext.y, cen.z-ext.z)),
+				WorldToGUIPoint(new Vector3(cen.x-ext.x, cen.y+ext.y, cen.z+ext.z)),
+				WorldToGUIPoint(new Vector3(cen.x+ext.x, cen.y+ext.y, cen.z+ext.z))
+			};
+			if (!initialized) {
+				min = extentPoints[0];
+				max = extentPoints[0];
+				initialized = true;
+			}
+			foreach (Vector2 v in extentPoints)
+			{
+				min = Vector2.Min(min, v);
+				max = Vector2.Max(max, v);
+			}
+		}
+
+
+		return new Rect(min.x, min.y, max.x - min.x, max.y - min.y);
+	}
+
+	public static Vector2 WorldToGUIPoint(Vector3 world)
+	{
+		Vector2 screenPoint = Camera.main.WorldToScreenPoint(world);
+		screenPoint.y = (float) Screen.height - screenPoint.y;
+		return screenPoint;
+	}
 
     void OnTriggerEnter(Collider other)
     {

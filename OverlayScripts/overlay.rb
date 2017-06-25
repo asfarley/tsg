@@ -53,11 +53,9 @@ end
 
 # Holds a history of states spanning all frames in a video.
 class TrajectoryBundle
+  attr_accessor :trajectories
   def initialize
     @trajectories = []
-  end
-  def trajectories
-    @trajectories
   end
   def containsFrame?(frame)
     #binding.pry
@@ -82,6 +80,12 @@ class TrajectoryBundle
   end
   def add(state_history)
     @trajectories.push(state_history)
+  end
+  def firstFrameWithTrajectory
+    @trajectories.map{ |sh| sh.states.first.frame }.min
+  end
+  def lastFrameWithTrajectory
+    @trajectories.map{ |sh| sh.states.last.frame }.max
   end
 end
 
@@ -120,6 +124,9 @@ Dir[ARGV[1] + "/*statehistory.txt"].each do |file|
   tj.add(sh)
 end
 
+puts "Found #{tj.trajectories.length} trajectories."
+puts "Trajectories begin in frame #{tj.firstFrameWithTrajectory} and terminate in frame #{tj.lastFrameWithTrajectory}."
+
 puts "Deleting old images..."
 #binding.pry
 delete_files = Dir.glob("#{ARGV[0]}/Overlay/*.png")
@@ -132,22 +139,23 @@ Dir[ARGV[0] + "/*.png"].each do |file|
   dirname = File.dirname(file)
   frame = basename.to_i
 
-  puts "Frame: #{frame}"
-
   #Open image file
   image = ChunkyPNG::Image.from_file(file)
 
   if(tj.containsFrame?(frame))
     states = tj.statesInFrame(frame)
-    #puts "For frame ##{frame}"
+    num_rendered_states = 0
+    # if(states.count > 1)
+    #   binding.pry
+    # end
     states.each do |state|
-      #binding.pry
+      #If bounding box is in view of camera, render onto image
       if(state.x > 0 and state.x < image.width and state.y > 0 and state.y < image.height)
-        image.rect(state.x, state.y, state.x + state.width, state.y + state.height, ChunkyPNG::Color::WHITE)
+        image.rect(state.x - state.width/2, state.y - state.height/2, state.x + state.width/2, state.y + state.height/2, ChunkyPNG::Color::WHITE)
+        num_rendered_states += 1
       end
-      #If bounding box is in range, overlay on image
-      #puts state
     end
+    puts "Rendered #{num_rendered_states} in frame #{frame}"
   end
 
   output_dir = File.join(dirname, "Overlay")

@@ -37,7 +37,7 @@ public class TargetNavigation : MonoBehaviour
 	    {
 	        if (_targetIndex >= Exits[_trajectoryIndex].Count - 1) //If this is the last target in the list
 	        {
-                this.GetComponent<CarMovement>().WriteStateHistory();
+                //this.GetComponent<CarMovement>().WriteStateHistory();
                 Destroy(this.gameObject);
 	        }
             else

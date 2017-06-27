@@ -23,7 +23,7 @@ public class Configuration : MonoBehaviour
         CreateNewOutputFolder();
     }
 
-    public string RootOutputPath = @"C:\TSG";
+    public string RootOutputPath = @"E:\TSG";
     public string OutputFolder = @"";
 
     public void CreateNewOutputFolder()

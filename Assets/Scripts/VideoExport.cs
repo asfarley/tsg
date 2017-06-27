@@ -6,7 +6,8 @@ using UnityEngine;
 public class VideoExport : MonoBehaviour
 {
     private const int FrameRate = 25;
-    private const string RootOutputPath = @"C:\TSG"; // TODO: get from settings
+    //private const string RootOutputPath = @"C:\TSG"; // TODO: get from settings
+    private string RootOutputPath;
     private const string AviGeneratorPathname = @"C:\VTCProject\images-to-avi\src\bin\Debug\ImgToAvi.exe"; // TODO: get from settings
     private string _outputFolder;
     private bool _launched;
@@ -19,12 +20,14 @@ public class VideoExport : MonoBehaviour
         if (! File.Exists(AviGeneratorPathname))
             throw new ApplicationException("Cannot find AVI generator. Fix the hardcoded path.");
 
-		//Create movie file
+        RootOutputPath = GameObject.FindGameObjectWithTag("configuration").GetComponent<Configuration>().FullOutputPath();
+
+        //Create movie file
         Time.captureFramerate = FrameRate;
         _outputFolder = Path.Combine(RootOutputPath, Guid.NewGuid().ToString("N").ToUpperInvariant());
         Directory.CreateDirectory(_outputFolder);
-
-        _launched = true;
+       
+    _launched = true;
     }
 	
 	// Update is called once per frame

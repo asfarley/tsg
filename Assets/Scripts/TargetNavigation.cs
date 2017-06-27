@@ -29,16 +29,18 @@ public class TargetNavigation : MonoBehaviour
 	void Update ()
 	{
         var distance = AbsoluteDistanceToTarget();
-	    if (distance < 5)
+	    if (distance < 15)
 	    {
 	        if (_targetIndex >= Exits[_trajectoryIndex].Count - 1) //If this is the last target in the list
 	        {
+                Debug.Log("Vehicle arrived at final waypoint, deleting vehicle.");
                 this.GetComponent<CarMovement>().WriteStateHistory();
                 Destroy(this.gameObject);
 	        }
             else
 	        {
-	            _targetIndex++;
+                Debug.Log("Vehicle arrived at waypoint, switching to next waypoint.");
+                _targetIndex++;
 	        }
         }
 	}

@@ -216,11 +216,6 @@ public class CarMovement : MonoBehaviour {
             }
 
 
-
-            //Bounds screenBounds = new Bounds();
-            //screenBounds.center = Camera.main.WorldToScreenPoint(bounds.center);
-            //screenBounds.max = Camera.main.WorldToScreenPoint(bounds.max);
-            //screenBounds.min = Camera.main.WorldToScreenPoint(bounds.min);
 			Rect boundingRect = GUIRectWithObject(carbody.gameObject);
             var state = new VehicleState();
             state.CentroidXGlobalCoordinates = this.transform.position.x;
@@ -233,8 +228,6 @@ public class CarMovement : MonoBehaviour {
             state.VzGlobalCoordinates = carbody.velocity.z;
             state.VxScreenCoordinates = screenVelocity.x;
             state.VyScreenCoordinates = screenVelocity.y;
-//            state.ObjectHeightScreenCoordinates = screenBounds.extents[0]; //Length of i-component should correspond to width in screen coordinates
-//            state.ObjectWidthScreenCoordinates = screenBounds.extents[1]; //Length of j-component should correspond to height in screen coordinates
 			state.ObjectHeightScreenCoordinates = boundingRect.height; 
 			state.ObjectWidthScreenCoordinates = boundingRect.width; 
             state.Timestamp = DateTime.Now;

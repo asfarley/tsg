@@ -8,7 +8,10 @@ public class SpawnVehicles : MonoBehaviour
 {
 
     // Probability of spawning a vehicle per frame
-    public float Probability; 
+    public float Probability;
+
+    //Don't spawn a vehicle if there is another vehicle within this distance
+    public float MinimumSpawnDistance;
 
 	// Use this for initialization
 	void Start () {
@@ -22,7 +25,7 @@ public class SpawnVehicles : MonoBehaviour
         {
             var vehiclePosition = vehicle.transform.position;
             var totalDistance = Vector3.Distance(vehiclePosition, transform.position);
-            if (totalDistance < 5) //If there's a vehicle within 5 units of this spawn point, don't spawn
+            if (totalDistance < MinimumSpawnDistance) //If there's a vehicle within 5 units of this spawn point, don't spawn
             {
                 return;
             }
@@ -40,13 +43,15 @@ public class SpawnVehicles : MonoBehaviour
                 if (this.transform.root.GetChild(i).CompareTag("trajectory"))
                 {
                     var t = new Trajectory();
+                    var ti = this.transform.root.GetChild(i).GetComponent<TrajectoryInfo>();
                     var child = this.transform.root.GetChild(i);
                     for (var j = 0; j < child.transform.childCount; j++)
                     {
                         var tf = child.GetChild(j);
                         t.Add(tf);
                     }
-
+                    t.Road = ti.Road;
+                    t.Turn = ti.Type;
                     navigation.Exits.Add(t);
                 }
             }

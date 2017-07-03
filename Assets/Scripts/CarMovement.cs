@@ -13,8 +13,11 @@ public class CarMovement : MonoBehaviour {
 	public float maxSteeringAngle; // maximum steer angle the wheel can have
     public float steeringGain; // closed-loop heading gain
 	public int maxLifetimeSeconds;
+    public float brakeTorqueGain;
+    public float MinBrakeTorque;
 
-    private bool _impendingCollision = false;
+    private bool _impendingCollision = false; //This should actually be a mapping from this vehicle to every other vehicle
+    private bool _brakingForRedLight = false;
     private float _distanceToCollision = 0;
 	private DateTime _startTime;
 
@@ -71,61 +74,79 @@ public class CarMovement : MonoBehaviour {
 	{   
         //Get state relative to target
 		try{
-		TargetNavigation tv = GetComponent<TargetNavigation>();
-        Transform target = GetComponent<TargetNavigation>().CurrentTarget;
-        Rigidbody carbody = GetComponent<Rigidbody>();
+		    TargetNavigation tv = GetComponent<TargetNavigation>();
+            Transform target = GetComponent<TargetNavigation>().CurrentTarget;
+            Rigidbody carbody = GetComponent<Rigidbody>();
 
-        //Calculate control error
-        var angle1 = Mathf.Atan2(transform.forward.z, transform.forward.x);
-	    var dir = target.position - transform.position;
-        var angle2 = Mathf.Atan2(dir.z, dir.x);
-	    var angleDiff = angle2 - angle1;
+            //Calculate control error
+            var angle1 = Mathf.Atan2(transform.forward.z, transform.forward.x);
+	        var dir = target.position - transform.position;
+            var angle2 = Mathf.Atan2(dir.z, dir.x);
+	        var angleDiff = angle2 - angle1;
          
-        //Calculate control outputs
-	    float steering =  -steeringGain * Mathf.Sin(angleDiff) * maxSteeringAngle;
-	    var motor = CalculateMotorTorqueSignal(carbody);
+            //Calculate control outputs
+	        float steering =  -steeringGain * Mathf.Sin(angleDiff) * maxSteeringAngle;
+	        var motor = CalculateMotorTorqueSignal(carbody);
+            var brake = CalculateBrakeTorqueSignal(carbody);
 
-        //Implement control signals
-        foreach (AxleInfo axleInfo in axleInfos) {
-			if (axleInfo.steering) {
-				axleInfo.leftWheel.steerAngle = steering;
-				axleInfo.rightWheel.steerAngle = steering;
-			}
-			if (axleInfo.motor) {
-				axleInfo.leftWheel.motorTorque = motor;
-				axleInfo.rightWheel.motorTorque = motor;
-			}
-		}
+            //Implement control signals
+            foreach (AxleInfo axleInfo in axleInfos) {
+			    if (axleInfo.steering) {
+				    axleInfo.leftWheel.steerAngle = steering;
+				    axleInfo.rightWheel.steerAngle = steering;
+			    }
+			    if (axleInfo.motor) {
+				    axleInfo.leftWheel.motorTorque = motor;
+				    axleInfo.rightWheel.motorTorque = motor;
+                    axleInfo.leftWheel.brakeTorque = brake;
+                    axleInfo.rightWheel.brakeTorque = brake;
+			    }
+		    }
 
-        //Log state
-        AppendState(carbody);
-		WriteIncrementalStateHistory();
+            //Log state
+            AppendState(carbody);
+		    WriteIncrementalStateHistory();
 
-		var lifetime = DateTime.Now - _startTime;
-		if(lifetime >= TimeSpan.FromSeconds(maxLifetimeSeconds))
-		{
-			Destroy(this.gameObject);
-		}
+		    var lifetime = DateTime.Now - _startTime;
+		    if(lifetime >= TimeSpan.FromSeconds(maxLifetimeSeconds))
+		    {
+			    Destroy(this.gameObject);
+		    }
 
-		}
-		catch(ArgumentOutOfRangeException ex) {
-			Console.WriteLine (ex.Message);
-		}
+		    }
+		    catch(ArgumentOutOfRangeException ex) {
+			    Console.WriteLine (ex.Message);
+		    }
 	}
 
     private float CalculateMotorTorqueSignal(Rigidbody carbody)
 	{
-        if (_impendingCollision)
+        if (_impendingCollision || _brakingForRedLight)
         {
-			float xVel = transform.InverseTransformDirection(carbody.velocity).x;
-			if (xVel > 0)
-				return -5 * maxMotorTorque * xVel / _distanceToCollision;
-			else
-				return 0;
+            if(_brakingForRedLight)
+            {
+                Debug.Log("Braking for red light.");
+            }
+			return 0;
         }
         else
         {
             return (carbody.velocity.magnitude > 5) ? 0 : maxMotorTorque * (5 - carbody.velocity.magnitude);
+        }
+    }
+
+    private float CalculateBrakeTorqueSignal(Rigidbody carbody)
+    {
+        if (_impendingCollision || _brakingForRedLight)
+        {
+            float brakeTorque = brakeTorqueGain * carbody.velocity.magnitude;
+            if (brakeTorque < MinBrakeTorque)
+                brakeTorque = MinBrakeTorque;
+            return brakeTorque;
+        }
+        else
+        {
+            return 0;
         }
     }
 
@@ -290,18 +311,83 @@ public class CarMovement : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
-        _impendingCollision = true;
-        _distanceToCollision = (other.transform.position - transform.position).magnitude;
+        HandleCollisions(other);
     }
 
     void OnTriggerStay(Collider other)
     {
-        _distanceToCollision = (other.transform.position - transform.position).magnitude;
+        HandleCollisions(other);
     }
 
     void OnTriggerExit(Collider other)
+    {   
+        bool isVehicle = other.gameObject.CompareTag("vehicle");
+        bool isIntersection = other.gameObject.CompareTag("intersectionvolume");
+
+        if (isIntersection)
+        {
+            _brakingForRedLight = false;
+        }
+        else if (isVehicle)
+        {
+            _impendingCollision = false; //TODO: This is not necessarily true! Just because we're no longer colliding with some particular vehicle, doesn't mean we're not colliding with a different vehicle.
+            Debug.Log("Vehicle impending collision avoided.");
+        }
+
+    }
+
+    void HandleCollisions(Collider other)
     {
-        _impendingCollision = false;
+        bool isVehicle = other.gameObject.CompareTag("vehicle");
+        bool isIntersection = other.gameObject.CompareTag("intersectionvolume");
+        _distanceToCollision = (other.transform.position - transform.position).magnitude;
+
+        if (isIntersection)
+        {
+            UpdateBrakingForIntersection(other);
+        }
+        else if (isVehicle)
+        {
+            //Check if other object is "in front" of this vehicle
+            Vector3 relative = this.transform.InverseTransformDirection(other.transform.position);
+            if (relative.x > 0)
+            {
+                _impendingCollision = true;
+            }
+            Debug.Log("Vehicle impending collision detected.");
+        }
+    }
+
+    void UpdateBrakingForIntersection(Collider other)
+    {
+        try
+        {
+            IntersectionLightSingleton intersection = other.transform.gameObject.GetComponentInChildren<IntersectionLightSingleton>();
+            TargetNavigation tv = GetComponent<TargetNavigation>();
+            TurnType turnType = tv.CurrentTrajectory.Turn;
+            IntersectionRoad road = tv.CurrentTrajectory.Road;
+            LightPhase phase = (road == IntersectionRoad.Road1) ? intersection.phase.road1 : intersection.phase.road2;
+            switch (phase)
+            {
+                case LightPhase.Green:
+                    _brakingForRedLight = false;
+                    break;
+                case LightPhase.Yellow:
+                    _brakingForRedLight = true;
+                    break;
+                case LightPhase.Red:
+                    _brakingForRedLight = true;
+                    break;
+            }
+
+            Debug.Log("Vehicle performing " + turnType.ToString() + " movement on " + road.ToString() + " has entered IntersectionInteriorVolume when light is " + phase.ToString());
+        }
+        catch (NullReferenceException ex)
+        {
+            Debug.Log(ex.Message);
+        }
+
+        return;
     }
 }
 

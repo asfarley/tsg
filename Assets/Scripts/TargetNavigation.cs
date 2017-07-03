@@ -3,6 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Assertions.Must;
 
+public enum TurnType
+{
+    Left,
+    Right,
+    Through
+};
+
+public enum IntersectionRoad
+{
+    Road1,
+    Road2
+};
+
 public class TargetNavigation : MonoBehaviour
 {
     private int _targetIndex;
@@ -61,6 +74,7 @@ public class TargetNavigation : MonoBehaviour
 
 public class Trajectory : List<Transform>
 {
-    
+    public TurnType Turn;
+    public IntersectionRoad Road;
 }
 

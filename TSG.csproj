@@ -101,8 +101,10 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\CarMovement.cs" />
     <Compile Include="Assets\Scripts\Configuration.cs" />
+    <Compile Include="Assets\Scripts\IntersectionLightSingleton.cs" />
     <Compile Include="Assets\Scripts\SpawnVehicles.cs" />
     <Compile Include="Assets\Scripts\TargetNavigation.cs" />
+    <Compile Include="Assets\Scripts\TrajectoryInfo.cs" />
     <Compile Include="Assets\Scripts\VideoExport.cs" />
   </ItemGroup>
   <ItemGroup>

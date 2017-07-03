@@ -10,6 +10,9 @@ public class VideoExport : MonoBehaviour
     private string _outputFolder;
     private bool _launched;
 
+    private int backgroundWidth;
+    private int backgroundHeight;
+
     // Use this for initialization
     void Start ()
     {

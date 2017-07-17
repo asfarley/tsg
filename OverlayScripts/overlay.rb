@@ -1,167 +1,69 @@
-#!/usr/bin/env ruby
-# This script takes a path to a folder containing PNG images and a separate
-# path to a folder containing state history logs. The images are overlaid with
-# bounding boxes represented in state history files for visual verification.
-#
-# Author::    Alexander Farley
-
 require 'oily_png'
 require 'optparse'
-require 'fileutils'
-require 'pry'
+require './TrajectoryBundle'
 
-# Holds per-frame state information on a tracked object.
-class State
-  attr_accessor :x, :y, :width, :height, :frame
-  def initialize(x,y,width,height,frame)
-    @x = x
-    @y = y
-    @width = width
-    @height = height
-    @frame = frame
-  end
-end
-
-# Holds the entire history of states for an object as it enters and exits the scene
-class StateHistory
-  def initialize
-    @states = []
-  end
-  def states
-    @states
-  end
-  def add(state)
-    @states.push(state)
-  end
-  def containsFrame?(frame)
-    @states.each do |state|
-      if(state.frame == frame)
-        return true #Found match
-      end
-    end
-    return false #No match
-  end
-  def stateInFrame(frame)
-    @states.each do |state|
-      if(state.frame == frame)
-        return state
-      end
-    end
-    return nil
-  end
-end
-
-# Holds a history of states spanning all frames in a video.
-class TrajectoryBundle
-  attr_accessor :trajectories
-  def initialize
-    @trajectories = []
-  end
-  def containsFrame?(frame)
-    #binding.pry
-    @trajectories.each do |state_history|
-      if(state_history.containsFrame?(frame))
-        return true
-      end
-    end
-    return false
-  end
-  def statesInFrame(frame)
-    states = []
-    @trajectories.each do |state_history|
-      if(state_history.containsFrame?(frame))
-        #binding.pry
-        state = state_history.stateInFrame(frame)
-        #puts "Found state in frame: #{state}"
-        states.push(state)
-      end
-    end
-    return states
-  end
-  def add(state_history)
-    @trajectories.push(state_history)
-  end
-  def firstFrameWithTrajectory
-    @trajectories.map{ |sh| sh.states.first.frame }.min
-  end
-  def lastFrameWithTrajectory
-    @trajectories.map{ |sh| sh.states.last.frame }.max
-  end
-end
-
+#Get image files
 options = {}
 OptionParser.new do |opts|
-  opts.banner = "Usage: overlay.rb [options]"
-  opts.on("-i", "--images", "Images path") do |images_path|
-    options[:images_path] = images_path
-  end
-  opts.on("-s", "--states", "State histories path") do |states_path|
-    options[:states_path] = states_path
-  end
+	opts.banner = "Usage: overlay.rb [options]"
+	opts.on('-i', '--imagepath IMAGE', 'images path') { |v| options[:image] = v }
+	opts.on('-s', '--statepath STATE', 'states path') { |v| options[:state] = v }
+	opts.on('-o', '--outpath OUTPUT', 'output path') { |v| options[:output] = v }
 end.parse!
 
-#p options
-#p ARGV
-
-#Read state histories
-puts "Reading state histories..."
-tj = TrajectoryBundle.new
-Dir[ARGV[1] + "/*statehistory.txt"].each do |file|
-  sh = StateHistory.new
-  File.readlines(file).each do |line|
-    #Parse x,y,width,height,frame
-    values = line.split(" ")
-    x = values[6].to_i
-    y = values[7].to_i
-    width = values[10].to_i
-    height = values[11].to_i
-    frame = values[14].to_i
-    #puts "Read state X:#{x} Y:#{y} WIDTH:#{width} HEIGHT:#{height} FRAME:#{frame}"
-    s = State.new(x,y,width,height,frame)
-    sh.add(s)
-  end
-  #puts "Adding trajectory"
-  tj.add(sh)
+#Validate images path
+pngFilesWildcardPath = File.join( options[:image], "*.png").gsub('\\', '/')
+imageCount = Dir[pngFilesWildcardPath].count
+if(imageCount < 1)
+	puts "No images found in #{pngFilesWildcardPath}, exiting."
+	exit
+else
+	puts "Discovered #{imageCount} images"
 end
 
-puts "Found #{tj.trajectories.length} trajectories."
-puts "Trajectories begin in frame #{tj.firstFrameWithTrajectory} and terminate in frame #{tj.lastFrameWithTrajectory}."
+#Validate states path
+stateCount = TrajectoryBundle.getStateHistoryCount(options[:state])
+if(stateCount < 1)
+	puts "No state logs found in #{options[:state]}, exiting."
+	exit
+else
+	puts "Discovered #{stateCount} state logs"
+end
 
-puts "Deleting old images..."
-#binding.pry
-delete_files = Dir.glob("#{ARGV[0]}/Overlay/*.png")
-#binding.pry
-FileUtils.rm delete_files
+#Validate output path
+if not File.directory?(options[:output])
+	puts "Output path does not exist, exiting."
+	exit
+end
 
-puts "Overlaying images..."
-Dir[ARGV[0] + "/*.png"].each do |file|
-  basename = File.basename(file, ".*")
-  dirname = File.dirname(file)
-  frame = basename.to_i
+#Read in state logs
+bundle = TrajectoryBundle.new
+bundle.readFromFile(options[:state])
 
-  #Open image file
-  image = ChunkyPNG::Image.from_file(file)
+#Find all .png files in the images path
+nFiles = Dir[pngFilesWildcardPath].length
+nProcessedFiles = 0
+Dir[pngFilesWildcardPath].each do |file|
+	#If overlay exists for this frame
+	filename = File.basename file
+	frame = filename[0..-3].to_i
 
-  if(tj.containsFrame?(frame))
-    states = tj.statesInFrame(frame)
-    num_rendered_states = 0
-    # if(states.count > 1)
-    #   binding.pry
-    # end
-    states.each do |state|
-      #If bounding box is in view of camera, render onto image
-      if(state.x > 0 and state.x < image.width and state.y > 0 and state.y < image.height)
-        image.rect(state.x - state.width/2, state.y - state.height/2, state.x + state.width/2, state.y + state.height/2, ChunkyPNG::Color::WHITE)
-        num_rendered_states += 1
-      end
-    end
-    puts "Rendered #{num_rendered_states} in frame #{frame}"
-  end
-
-  output_dir = File.join(dirname, "Overlay")
-  FileUtils.mkdir_p output_dir
-  overlay_path = File.join(output_dir, basename + "_overlay.png")
-
-  #binding.pry
-  image.save(overlay_path)
+	percent = (100.0*(nProcessedFiles/nFiles)).round()
+	puts "Processing: #{percent}% complete (frame #{nProcessedFiles}"
+	
+	overlayObjects = bundle.objectsInFrame(frame)
+	image = ChunkyPNG::Image.from_file(file)
+	overlayObjects.each do  |object|
+		x0 = (object.x - object.width/2).round
+		y0 = (object.y - object.height/2).round
+		x1 = (object.x + object.width/2).round
+		y1 = (object.y + object.height/2).round
+		#puts "Rect X0:#{x0} Y0:#{y0} X1:#{x1} Y1:#{y1}"
+		image = image.rect(x0, y0, x1, y1, stroke_color = ChunkyPNG::Color::WHITE)
+	end
+	
+	basename = File.basename file
+	filepath = File.join(options[:output], basename)
+	image.save(filepath)
+	nProcessedFiles = nProcessedFiles+1
 end

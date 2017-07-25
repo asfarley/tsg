@@ -10,6 +10,7 @@
 # Usage:
 # ruby bblookup.rb E:\TSG\Test\ C:\VTCProject\vtc\bin\examples\BoundingBoxInfo.txt
 require './TrajectoryBundle'
+require 'pry'
 
 #Verify command-line parameters
 if(ARGV.count < 3)
@@ -72,6 +73,8 @@ File.readlines(boundingBoxFilePath).each do |line|
 	width = boundingBoxElements[2].split(":")[1].to_i
 	height = boundingBoxElements[3].split(":")[1].to_i
 	frame = boundingBoxElements[4].split(":")[1].to_i
+
+	puts "Examining frame #{frame} at location x:#{x}, y:#{y}, width:#{width}, height:#{height}"
 	count = bundle.numObjectsInSubframe(x,y,width,height,frame)
 	output_line = "Filename:#{filepath} X:#{x} Y:#{y} Width:#{width} Height:#{height} Frame:#{frame} Count:#{count}"
 	output_file.puts output_line

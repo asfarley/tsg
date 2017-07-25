@@ -27,40 +27,15 @@ class StateMeasurement
 	# return false. 
 	# This function is used to detect the quantity of vehicles partially contained in a particular bounding box.
 	def isContainedInBox?(bounding_box)
-		left_upper_corner = [ bounding_box["X"] - bounding_box["Width"]/2, bounding_box["Y"] - bounding_box["Height"]/2]
-		if isPointInBox? left_upper_corner
+		x_min = bounding_box["X"] - bounding_box["Width"]/2
+		x_max = bounding_box["X"] + bounding_box["Width"]/2
+		y_min = bounding_box["Y"] - bounding_box["Height"]/2
+		y_max = bounding_box["Y"] + bounding_box["Height"]/2
+
+		if(@x > x_min and @x < x_max and @y > y_min and @y < y_max)
 			return true
 		end
-		
-		right_upper_corner = [ bounding_box["X"] + bounding_box["Width"]/2, bounding_box["Y"] - bounding_box["Height"]/2]
-		if isPointInBox? right_upper_corner
-			return true
-		end
-		
-		left_lower_corner = [ bounding_box["X"] - bounding_box["Width"]/2, bounding_box["Y"] + bounding_box["Height"]/2]
-		if isPointInBox? left_lower_corner
-			return true
-		end
-		
-		right_lower_corner = [ bounding_box["X"] + bounding_box["Width"]/2, bounding_box["Y"] + bounding_box["Height"]/2]
-		if isPointInBox? right_lower_corner
-			return true
-		end
-		
-		return false
-	end
-	
-	# isPointInBox?
-	# Takes a point (an array: [20.0, 31.2]  and returns true if the point is contained
-	# within the rectangle indicated by this measurement.
-	def isPointInBox?(point)
-		min_x = @x - @width/2
-		max_x = @x + @width/2
-		min_y = @y - @height/2
-		max_y = @y + @height/2
-		if point[0] > min_x and point[0] < max_x and point[1] > min_y and point[1] < max_y
-			return true
-		end
+
 		return false
 	end
 end
@@ -133,9 +108,15 @@ class TrajectoryBundle
 			t.measurements.each do |m|
 				if(m.frame == frame)
 					bounding_box = { "X" => x, "Y" => y, "Width" => width, "Height" => height, "Frame" => frame }
+					puts "Comparing bounding box: X=#{x}, Y=#{y}, Width=#{width}, Height=#{height}, Frame=#{frame} to input measurement:"
+					puts "frame: #{m.frame} height:#{m.height} width:#{m.width} x:#{m.x} y:#{m.y}"
 					if m.isContainedInBox? bounding_box
+						puts "Measurement is contained in box."
 						num_objects += 1
+					else
+						puts "Measurement is not contained in box."
 					end
+					#binding.pry
 				end
 			end
 		end

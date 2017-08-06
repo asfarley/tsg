@@ -1,14 +1,22 @@
 # bblookup.rb
 # Author: Alexander Farley
 # Created 1:59 PM July 16, 2017
+# Update 8:18 PM August 5, 2017 - adding object spatial information list output
 # 
 # This script maps a list of bounding-boxes to a list of object quantity (subitization). 
 # The script takes two paths as input: one path to a textfile containing a list of bounding boxes, 
 # another path to a folder containing a list of object position logs (statehistory.txt files). 
 #
+# In addition to object quantity, this file also outputs a list of object spatial information for each image. The spatial information for each
+# object is written in original-image coordinates to prevent any loss of information, but will likely need to be adjusted to relative coordinates
+# for training-set generation. Spatial information for each object is formatted as a 4-element vector of continuous values.
+#
+# An example line in the output file is:
+# Filename:"C:\VTCProject\vtc\bin\examples\MovingObjectSubimages\96.bmp" X:392.0 Y:307.7 Width:32 Height:28 Frame:556 Count:2 [X:398 Y:310 Width:2 Height:13] [X:393 Y:310 Width:2 Height:10]
+#
 #
 # Usage:
-# ruby bblookup.rb E:\TSG\Test\ C:\VTCProject\vtc\bin\examples\BoundingBoxInfo.txt
+# ruby bblookup.rb E:\TSG\Test\ C:\VTCProject\vtc\bin\examples\BoundingBoxInfo.txt C:\VTCProject\vtc\bin\examples\ClassifiedBoundingBoxInfo.txt
 require './TrajectoryBundle'
 require 'pry'
 
@@ -76,6 +84,11 @@ File.readlines(boundingBoxFilePath).each do |line|
 
 	puts "Examining frame #{frame} at location x:#{x}, y:#{y}, width:#{width}, height:#{height}"
 	count = bundle.numObjectsInSubframe(x,y,width,height,frame)
-	output_line = "Filename:#{filepath} X:#{x} Y:#{y} Width:#{width} Height:#{height} Frame:#{frame} Count:#{count}"
+	bounding_boxes = bundle.ObjectsInSubframeBoundingBoxes(x,y,width,height,frame)
+	bounding_boxes_output_string = ""
+	bounding_boxes.each do |bounding_box|
+		bounding_boxes_output_string += " [X:#{bounding_box["X"]} Y:#{bounding_box["Y"]} Width:#{bounding_box["Width"]} Height:#{bounding_box["Height"]}]"
+	end
+	output_line = "Filename:#{filepath} X:#{x} Y:#{y} Width:#{width} Height:#{height} Frame:#{frame} Count:#{count} #{bounding_boxes_output_string}"
 	output_file.puts output_line
 end

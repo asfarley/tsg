@@ -18,11 +18,13 @@ public class CarMovement : MonoBehaviour {
 
     private bool _impendingCollision = false; //This should actually be a mapping from this vehicle to every other vehicle
     private bool _brakingForRedLight = false;
+    private bool _approachingIntersection = true;
     private float _distanceToCollision = 0;
 	private DateTime _startTime;
+    
 
-	private Guid _guid;
-
+    private Guid _guid;
+    
     public List<VehicleState> StateHistory;
 
     public void Start()

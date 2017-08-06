@@ -122,4 +122,26 @@ class TrajectoryBundle
 		end
 		return num_objects
 	end
+	
+	def ObjectsInSubframeBoundingBoxes(x,y,width,height,frame)
+		contained_bounding_boxes = []
+		@trajectories.each do |t|
+			t.measurements.each do |m|
+				if(m.frame == frame)
+					bounding_box = { "X" => x, "Y" => y, "Width" => width, "Height" => height, "Frame" => frame }
+					puts "Comparing bounding box: X=#{x}, Y=#{y}, Width=#{width}, Height=#{height}, Frame=#{frame} to input measurement:"
+					puts "frame: #{m.frame} height:#{m.height} width:#{m.width} x:#{m.x} y:#{m.y}"
+					if m.isContainedInBox? bounding_box
+						puts "Measurement is contained in box."
+						contained_bounding_box = { "X" => m.x, "Y" => m.y, "Width" => m.width, "Height" => m.height }
+						contained_bounding_boxes.push(contained_bounding_box)
+					else
+						puts "Measurement is not contained in box."
+					end
+					#binding.pry
+				end
+			end
+		end
+		return contained_bounding_boxes
+	end
 end
